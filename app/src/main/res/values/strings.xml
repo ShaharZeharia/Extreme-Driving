@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Extreme-Driving</string>
+    <string name="desc_right_arrow">Right Arrow</string>
+    <string name="desc_left_arrow">Left Arrow</string>
+</resources>
