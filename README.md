@@ -31,6 +31,11 @@ git clone https://github.com/ShaharZeharia/Extreme-Driving.git
 
 3.  Build and run the project on your device or emulator.
 
+
+
+<img width="360" alt="Screenshot 2024-06-24 at 20 10 29" src="https://github.com/ShaharZeharia/Extreme-Driving/assets/169888911/7d964924-2266-499c-bc06-7f4a269322d2">
+
+
 # Contact
   
 
