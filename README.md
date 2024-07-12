@@ -3,6 +3,7 @@ Welcome to **Extreme-Driving**, an exciting game where players navigate through 
 
 
 
+
 ## Features
 
 - **Collision Detection**: The game detects collisions and updates the user interface accordingly.
@@ -18,9 +19,8 @@ Welcome to **Extreme-Driving**, an exciting game where players navigate through 
 - **Return to Menu Button**: Easily navigate back to the main menu from the highscores screen.
 
 
-## Installation
 
-  
+## Installation
 
  - Clone the repository:
 git clone https://github.com/ShaharZeharia/Extreme-Driving.git
