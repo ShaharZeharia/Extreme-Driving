@@ -1,13 +1,23 @@
 package com.example.extreme_driving.Logic;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameManager {
+    // Constants representing values in the board
+    private static final int EMPTY_CELL = 0;
+    private static final int STONE_VALUE = 1;
+    private static final int COIN_VALUE = 2;
+
     private int numCollisions = 0;
+    private int score = 0;
     private final int life;
     private int carCol;
 
-    private final int[][] board; //empty is 0,stone is 1
+    private final int[][] board; //empty is 0,stone is 1, coin is 2
     private final int rows;
     private final int cols;
     private final Random rnd = new Random();
@@ -18,7 +28,7 @@ public class GameManager {
 
     public GameManager(int life, int rows, int cols) {
         this.life = life;
-        this.carCol = 1;
+        this.carCol = 2;
         this.rows = rows;
         this.cols = cols;
         this.board = new int[rows][cols];
@@ -41,6 +51,26 @@ public class GameManager {
         return board;
     }
 
+    public static int getEmptyCell() {
+        return EMPTY_CELL;
+    }
+
+    public static int getStoneValue() {
+        return STONE_VALUE;
+    }
+
+    public static int getCoinValue() {
+        return COIN_VALUE;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public void moveCarLeft() {
         if (carCol > 0) {
             carCol--;
@@ -56,34 +86,68 @@ public class GameManager {
     public void clearBoard() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                board[i][j] = 0;
+                board[i][j] = EMPTY_CELL;
             }
         }
     }
 
     public void setRandomRock() {
-        int colIndex = rnd.nextInt(cols);
-        board[0][colIndex] = 1;
+        int colIndex = getRandomAvailableColumn();
+        if (colIndex != -1) {
+            board[0][colIndex] = STONE_VALUE;
+        }
     }
 
-    public void moveStones() {
+    public void setRandomCoin() {
+        int colIndex = getRandomAvailableColumn();
+        if (colIndex != -1) {
+            board[0][colIndex] = COIN_VALUE;
+        }
+    }
+
+    private int getRandomAvailableColumn() {
+        List<Integer> availableColumns = new ArrayList<>();
+        for (int col = 0; col < cols; col++) {
+            if (board[0][col] == EMPTY_CELL) {
+                availableColumns.add(col);
+            }
+        }
+        if (availableColumns.isEmpty()) {
+            return -1;
+        }
+        return availableColumns.get(rnd.nextInt(availableColumns.size()));
+    }
+
+
+    public void moveStonesAndCoins() {
+        int type;
         for (int row = rows - 1; row >= 0; row--) {
             for (int col = 0; col < cols; col++) {
-                if (board[row][col] == 1) {
-                    board[row][col] = 0;
+                if (board[row][col] != EMPTY_CELL) {
+                    type = board[row][col];
+                    board[row][col] = EMPTY_CELL;
                     if (row < rows - 1) {
-                        board[row + 1][col] = 1;
+                        board[row + 1][col] = (type == STONE_VALUE) ? STONE_VALUE : COIN_VALUE;
                     }
                 }
             }
         }
     }
 
-    public boolean checkCollision() {
+    public boolean checkCollisionWithStone() {
         boolean isCollision = false;
-        if (board[rows - 1][carCol] == 1) {
+        if (board[rows - 1][carCol] == STONE_VALUE) {
             numCollisions++;
-            board[rows - 1][carCol] = 0;
+            board[rows - 1][carCol] = EMPTY_CELL;
+            isCollision = true;
+        }
+        return isCollision;
+    }
+
+    public boolean checkCollisionWithCoin() {
+        boolean isCollision = false;
+        if (board[rows - 1][carCol] == COIN_VALUE) {
+            board[rows - 1][carCol] = EMPTY_CELL;
             isCollision = true;
         }
         return isCollision;
@@ -91,13 +155,14 @@ public class GameManager {
 
     public void resetGame() {
         numCollisions = 0;
-        carCol = 1;
+        carCol = 2;
         clearBoard();
     }
 
     public boolean isGameLost() {
         return life == numCollisions;
     }
+
 }
 
 

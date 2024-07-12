@@ -5,16 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".MainActivity">
+    android:background="@drawable/game_background"
+    tools:context=".Activity.MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="@dimen/hearts_width"
         android:layout_height="@dimen/heart_dimention"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin">
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/main_IMG_heart1"
@@ -39,8 +39,22 @@
             app:srcCompat="@drawable/heart" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/main_LBL_score"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:elevation="1dp"
+        android:textColor="@color/red_600"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        tools:text="0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+
         android:id="@+id/main_BTN_left_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,8 +62,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="@dimen/default_margin"
         android:layout_marginBottom="@dimen/bottom_margin_default"
-        android:src="@drawable/left_arrow"
         android:contentDescription="@string/desc_left_arrow"
+        android:src="@drawable/left_arrow"
         tools:ignore="RtlHardcoded" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -60,9 +74,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="@dimen/default_margin"
         android:layout_marginBottom="@dimen/bottom_margin_default"
-        android:src="@drawable/right_arrow"
         android:contentDescription="@string/desc_right_arrow"
+        android:src="@drawable/right_arrow"
         tools:ignore="RtlHardcoded" />
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -76,46 +91,101 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_0_0"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_1_0"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_2_0"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_3_0"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                tools:ignore="MissingClass">
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_0_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_0_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_1_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_1_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_2_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_2_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_3_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_3_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/racing_car_4_0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:rotation="270"
-                    android:src="@drawable/racing_car"/>
+                    android:src="@drawable/racing_car" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/stone_4_0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/stone"/>
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_4_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
             </FrameLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -125,45 +195,101 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_0_1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_1_1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_2_1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_3_1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_0_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_0_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_2_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_2_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_3_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_3_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/racing_car_4_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:rotation="270"
-                    android:src="@drawable/racing_car"/>
+                    android:src="@drawable/racing_car" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/stone_4_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/stone"/>
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_4_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
             </FrameLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -173,45 +299,311 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_0_2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_1_2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_2_2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/stone_3_2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/stone"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_0_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_0_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_2_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_2_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_3_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_3_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/racing_car_4_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:rotation="270"
-                    android:src="@drawable/racing_car"/>
+                    android:src="@drawable/racing_car" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/stone_4_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/stone"/>
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_4_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_0_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_0_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_1_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_1_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <!-- Row 2 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_2_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_2_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_3_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_3_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <!-- Row 4 with racing car -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/racing_car_4_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:rotation="270"
+                    android:src="@drawable/racing_car" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_4_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_4_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_0_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_0_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_1_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_1_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_2_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_2_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_3_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_3_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/racing_car_4_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:rotation="270"
+                    android:src="@drawable/racing_car" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/stone_4_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/stone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/coin_4_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coin" />
             </FrameLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 

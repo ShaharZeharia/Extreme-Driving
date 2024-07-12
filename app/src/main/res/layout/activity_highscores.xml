@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/highscores_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_new_background"
+    android:orientation="vertical"
+    tools:context=".Activity.HighscoresActivity">
+
+    <FrameLayout
+        android:id="@+id/highscores_FRAME_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/default_padding" />
+
+
+    <FrameLayout
+        android:id="@+id/highscores_FRAME_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/highscores_BTN_back_to_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/back_to_menu_BNT" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
