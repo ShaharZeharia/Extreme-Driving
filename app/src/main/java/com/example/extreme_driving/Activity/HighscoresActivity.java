@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.extreme_driving.Fragments.ListFragment;
 import com.example.extreme_driving.Fragments.MapFragment;
 import com.example.extreme_driving.Interfaces.Callback_ListItemClicked;
@@ -15,6 +16,7 @@ import com.example.extreme_driving.Utilities.SharePreferencesManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
 
 public class HighscoresActivity extends AppCompatActivity {
@@ -36,7 +38,8 @@ public class HighscoresActivity extends AppCompatActivity {
     private ArrayList<Player> loadPlayerList() {
         String playerListJson = SharePreferencesManager.getInstance().getString("players_list", "");
         Gson gson = new Gson();
-        return gson.fromJson(playerListJson, new TypeToken<ArrayList<Player>>() {}.getType());
+        return gson.fromJson(playerListJson, new TypeToken<ArrayList<Player>>() {
+        }.getType());
     }
 
     private void initViews() {
@@ -48,9 +51,9 @@ public class HighscoresActivity extends AppCompatActivity {
                 mapFragment.zoom(lat, lon);
             }
         });
-        getSupportFragmentManager().beginTransaction().add(R.id.highscores_FRAME_list,listFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.highscores_FRAME_list, listFragment).commit();
         mapFragment = new MapFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.highscores_FRAME_map,mapFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.highscores_FRAME_map, mapFragment).commit();
 
         highscores_BTN_back_to_menu.setOnClickListener(v -> navigateToMenu());
     }
@@ -61,7 +64,7 @@ public class HighscoresActivity extends AppCompatActivity {
         finish();
     }
 
-    private void findViews(){
+    private void findViews() {
         highscores_FRAME_list = findViewById(R.id.highscores_FRAME_list);
         highscores_FRAME_map = findViewById(R.id.highscores_FRAME_map);
         highscores_BTN_back_to_menu = findViewById(R.id.highscores_BTN_back_to_menu);

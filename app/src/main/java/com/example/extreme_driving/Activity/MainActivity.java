@@ -7,8 +7,10 @@ import android.annotation.SuppressLint;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
@@ -262,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
         main_IMG_hearts[gameManager.getNumCollisions() - 1]
                 .setVisibility(View.INVISIBLE);
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        vibrator.vibrate(500);
+        vibrator.vibrate(VibrationEffect.createOneShot(500, 30));
         Toast.makeText(this, "Crash occurred!", Toast.LENGTH_SHORT).show();
         soundPlayer = new SoundPlayer(this);
         soundPlayer.playSound(R.raw.car_accident_with_squeal_and_crash);
@@ -293,8 +295,8 @@ public class MainActivity extends AppCompatActivity {
                             lat = location.getLatitude();
                             lon = location.getLongitude();
                         } else {
-                            lat = 0.0; // default value if location is null
-                            lon = 0.0; // default value if location is null
+                            lat = 0.0;
+                            lon = 0.0;
                         }
                         addPlayerScoreAndSave(score);
                         navigateToHighscores();
