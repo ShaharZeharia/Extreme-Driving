@@ -1,7 +1,5 @@
 package com.example.extreme_driving.Logic;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -151,12 +149,6 @@ public class GameManager {
             isCollision = true;
         }
         return isCollision;
-    }
-
-    public void resetGame() {
-        numCollisions = 0;
-        carCol = 2;
-        clearBoard();
     }
 
     public boolean isGameLost() {
